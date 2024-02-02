@@ -18,5 +18,5 @@ pipeline {
               sh 'java -jar target/helloworld_jenkins-0.0.1-SNAPSHOT.jar &'
            }
        }
-
+   }
 }
