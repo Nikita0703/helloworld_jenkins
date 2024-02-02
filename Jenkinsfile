@@ -8,15 +8,23 @@ pipeline {
          }
       }
 
-       stage('Build') {
-           steps {
-              sh 'mvn clean install'
-           }
-       }
-       stage('Deploy') {
-           steps {
-              sh 'java -jar target/helloworld_jenkins-0.0.1-SNAPSHOT.jar &'
-           }
-       }
+      stage ('Build') {
+          steps {
+              bat 'mvn clean install'
+          }
+      }
+
+      stage ('Deploy') {
+          steps {
+              echo 'Deploying ...'
+              bat 'ls'
+              dir("target") {
+                 withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                  echo "&"
+                  bat "java -jar helloworld_jenkins-0.0.1-SNAPSHOT.jar &"
+                 }
+              }
+          }
+      }
    }
 }
