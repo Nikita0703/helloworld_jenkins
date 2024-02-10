@@ -24,6 +24,15 @@ pipeline {
          }
       }
 
+      stage ('Push image to Hub'{
+         steps{
+             script{
+                 bat 'docker login'
+                 bat 'docker push nikita0703/jenkins'
+             }
+         }
+      }
+
       stage ('Deploy') {
           steps {
               echo 'Deploying ...'
