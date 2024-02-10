@@ -19,7 +19,7 @@ pipeline {
       stage ('Build docker image'){
          steps{
              script{
-             bat 'docker build -t nikita0703/jenkins .'
+                 bat 'docker build -t nikita0703/jenkins .'
              }
          }
       }
