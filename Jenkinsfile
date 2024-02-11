@@ -3,14 +3,14 @@ pipeline {
    agent any
 
    stages {
-      stage ('Clone sources') {
+      stage ('Clone sources'){
          steps {
             echo 'Cloning ...'
             git url: 'https://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@github.com/Nikita0703/helloworld_jenkins.git'
          }
       }
 
-      stage ('Build') {
+      stage ('Build'){
          steps {
             bat 'mvn clean install'
          }
@@ -24,7 +24,7 @@ pipeline {
          }
       }
 
-      stage ('Push image to Hub'{
+      stage ('Push image to Hub'){
          steps{
             script{
                 bat 'docker login'
@@ -33,7 +33,7 @@ pipeline {
          }
       }
 
-      stage ('Deploy') {
+      stage ('Deploy'){
          steps {
             echo 'Deploying ...'
             bat 'ls'
