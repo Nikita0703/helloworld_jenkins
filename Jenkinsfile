@@ -31,9 +31,10 @@ pipeline {
       stage ('Push image to Hub'){
          steps{
             script{
-                withCredentials([string(credentialsId: 'dockerhub-pwd1', variable: 'dockerhubpwd1')]) {
-                    bat 'docker login -u nikita0703 -p ${dockerhubpwd1}'
-                    bat 'docker push nikita0703/jenkins'
+                withDockerRegistry(credentialsId: 'my-docker-token', url: 'https://index.docker.io/v1/') {
+                    bat '''
+                       docker push nikita0703/jenkins
+                    '''
                 }
             }
          }
