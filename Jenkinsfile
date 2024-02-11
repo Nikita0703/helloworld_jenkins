@@ -32,9 +32,10 @@ pipeline {
          steps{
             script{
                 withDockerRegistry(credentialsId: 'my-docker-token', url: 'https://index.docker.io/v1/') {
-                    bat '''
+
+                   bat '''
                        docker push nikita0703/jenkins
-                    '''
+                   '''
                 }
             }
          }
