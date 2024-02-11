@@ -32,7 +32,7 @@ pipeline {
          steps{
             script{
                 withCredentials([string(credentialsId: 'dockerhub-pwd1', variable: 'dockerhubpwd1')]) {
-                    bat 'docker login -u nikita0703 -p ${dockerhubpwd}'
+                    bat 'docker login -u nikita0703 -p ${dockerhubpwd1}'
                     bat 'docker push nikita0703/jenkins'
                 }
             }
