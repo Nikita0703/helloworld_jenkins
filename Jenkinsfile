@@ -44,7 +44,6 @@ pipeline {
       stage ('Deploy'){
          steps {
             echo 'Deploying ...'
-            bat 'ls'
             dir("target") {
                 withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
                   echo "&"
